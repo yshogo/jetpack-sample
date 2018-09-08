@@ -11,6 +11,8 @@ import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var currentFragment: MainNavigationFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
@@ -35,6 +37,9 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             navigation.selectedItemId = R.id.schedule
+        } else {
+            currentFragment = supportFragmentManager.findFragmentById(R.id.container) as? MainNavigationFragment
+                    ?: throw IllegalStateException("Activity recreated, but no fragment found!")
         }
     }
 
@@ -44,4 +49,14 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, fragment).commitNow()
     }
 
+    override fun onBackPressed() {
+        if (!currentFragment .onBackPress()) {
+            super.onBackPressed()
+        }
+    }
+
+    override fun onUserInteraction() {
+        super.onUserInteraction()
+        currentFragment.onUserIntruction()
+    }
 }
