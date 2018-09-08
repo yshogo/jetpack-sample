@@ -6,26 +6,25 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.yamadashougo.schejule_app.R
+import com.example.yamadashougo.schejule_app.databinding.ScheduleFragmentBinding
 import com.example.yamadashougo.schejule_app.ui.main.MainNavigationFragment
 
 class ScheduleFragment : Fragment(), MainNavigationFragment {
 
-    companion object {
-        fun newInstance() = ScheduleFragment()
-    }
-
-    private lateinit var viewModel: ScheduleViewModel
+    private lateinit var scheduleViewModel: ScheduleViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.schedule_fragment, container, false)
+        scheduleViewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
+        val binding = ScheduleFragmentBinding.inflate(inflater, container, false).apply {
+            setLifecycleOwner(this@ScheduleFragment)
+        }
+
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ScheduleViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

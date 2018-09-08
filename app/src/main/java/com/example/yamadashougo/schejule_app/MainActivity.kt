@@ -48,15 +48,4 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .replace(R.id.container, fragment).commitNow()
     }
-
-    override fun onBackPressed() {
-        if (!currentFragment .onBackPress()) {
-            super.onBackPressed()
-        }
-    }
-
-    override fun onUserInteraction() {
-        super.onUserInteraction()
-        currentFragment.onUserIntruction()
-    }
 }
