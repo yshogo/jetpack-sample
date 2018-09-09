@@ -29,6 +29,7 @@ object ScheduleRepository {
         service.getSchedule().enqueue(object : Callback<List<Schedule>> {
 
             override fun onResponse(call: Call<List<Schedule>>, @Nullable response: Response<List<Schedule>>) {
+                print(response.body())
                 data.value = response.body()
             }
 

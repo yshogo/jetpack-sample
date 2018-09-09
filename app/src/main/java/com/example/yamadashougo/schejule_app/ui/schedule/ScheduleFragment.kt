@@ -34,7 +34,8 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
 
     private fun observeViewModel() {
 
-        scheduleViewModel.scheduleObservable.observe(this, Observer {
+        scheduleViewModel.getObservableSchedule().observe(this, Observer<List<Schedule>> {
+            print("OK")
             print(it)
         })
     }
