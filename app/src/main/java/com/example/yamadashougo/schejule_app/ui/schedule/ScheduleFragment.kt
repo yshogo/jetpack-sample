@@ -1,6 +1,5 @@
 package com.example.yamadashougo.schejule_app.ui.schedule
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -25,19 +24,9 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
         return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
 
-        observeViewModel()
+        scheduleViewModel.start()
     }
-
-
-    private fun observeViewModel() {
-
-        scheduleViewModel.getObservableSchedule().observe(this, Observer<List<Schedule>> {
-            print("OK")
-            print(it)
-        })
-    }
-
 }

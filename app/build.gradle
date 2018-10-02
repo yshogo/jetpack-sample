@@ -40,8 +40,12 @@ dependencies {
     implementation "com.google.dagger:dagger:2.16"
     implementation "com.squareup.okhttp3:okhttp:3.10.0"
     implementation "com.squareup.okhttp3:logging-interceptor:3.10.0"
+    implementation 'se.ansman.kotshi:api:1.0.5'
+    implementation 'com.squareup.moshi:moshi:1.5.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
     annotationProcessor "com.google.dagger:dagger-compiler:2.16"
     kapt "com.google.dagger:dagger-compiler:2.16"
+    kapt 'se.ansman.kotshi:compiler:1.0.5'
     testImplementation 'junit:junit:4.12'
     testImplementation "org.robolectric:robolectric:3.4.2"
     kaptTest "com.google.dagger:dagger-compiler:2.16"
