@@ -31,17 +31,8 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
     override fun onResume() {
         super.onResume()
 
-//        scheduleViewModel.start()
-        ScheduleRepository().getScheduleList(object : SchejuleCallback {
-            override fun onSuccess(schedulesList: List<Schedule>) {
-                items = schedulesList
-                setList()
-            }
-
-            override fun onError() {
-            }
-        })
-//        setList()
+        scheduleViewModel.start()
+        setList()
     }
 
     fun setList() {
