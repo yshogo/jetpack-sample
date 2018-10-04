@@ -46,6 +46,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun <F> replaceFragment(fragment: F) where F : Fragment, F : MainNavigationFragment {
         supportFragmentManager.beginTransaction()
-                .replace(R.id.container, fragment).commitNow()
+                .replace(R.id.fragment_container, fragment).commitNow()
     }
 }

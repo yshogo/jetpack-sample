@@ -10,6 +10,6 @@ fun items(recyclerView: RecyclerView, items: List<Schedule>) {
 
     val adapter = recyclerView.adapter
     if (adapter != null && adapter is ScheduleListAdapter) {
-        adapter.notifyDataSetChanged()
+        adapter.updateAdapter(items)
     }
 }

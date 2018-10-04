@@ -35,7 +35,7 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
         setList()
     }
 
-    fun setList() {
+    private fun setList() {
         val adapter = ScheduleListAdapter(requireContext(), items)
         mScheduleBinding.scheduleList.layoutManager = LinearLayoutManager(context)
         mScheduleBinding.scheduleList.adapter = adapter
