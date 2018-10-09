@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.yamadashougo.schejule_app.R
 import com.example.yamadashougo.schejule_app.databinding.ScheduleItemBinding
 
-class ScheduleListAdapter(val context: Context, var list: List<Schedule>) : RecyclerView.Adapter<ScheduleListAdapter.ViewHolder>(){
+class ScheduleListAdapter(val context: Context, var list: List<Schedule>, val fragment: ScheduleFragment) : RecyclerView.Adapter<ScheduleListAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val itemBinding = DataBindingUtil.inflate<ScheduleItemBinding>(LayoutInflater.from(p0.context), R.layout.schedule_item, p0, false)
@@ -29,6 +29,9 @@ class ScheduleListAdapter(val context: Context, var list: List<Schedule>) : Recy
 
     fun updateAdapter(items: List<Schedule>) {
         list = items
+        if (fragment.mScheduleBinding.swipeRefreshLayout.isRefreshing) {
+            fragment.mScheduleBinding.swipeRefreshLayout.isRefreshing = false
+        }
         notifyDataSetChanged()
     }
 }

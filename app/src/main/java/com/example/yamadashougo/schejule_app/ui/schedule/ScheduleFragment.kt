@@ -13,7 +13,7 @@ import com.example.yamadashougo.schejule_app.ui.main.MainNavigationFragment
 class ScheduleFragment : Fragment(), MainNavigationFragment {
 
     private lateinit var scheduleViewModel: ScheduleViewModel
-    private lateinit var mScheduleBinding: ScheduleFragmentBinding
+    lateinit var mScheduleBinding: ScheduleFragmentBinding
     var items: List<Schedule> = ArrayList()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -23,6 +23,10 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
         mScheduleBinding = ScheduleFragmentBinding.inflate(inflater, container, false).apply {
             setLifecycleOwner(this@ScheduleFragment)
             viewModel = this@ScheduleFragment.scheduleViewModel
+        }
+
+        mScheduleBinding.swipeRefreshLayout.setOnRefreshListener {
+            scheduleViewModel.start()
         }
 
         return mScheduleBinding.root
@@ -36,7 +40,7 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
     }
 
     private fun setList() {
-        val adapter = ScheduleListAdapter(requireContext(), items)
+        val adapter = ScheduleListAdapter(requireContext(), items, this)
         mScheduleBinding.scheduleList.layoutManager = LinearLayoutManager(context)
         mScheduleBinding.scheduleList.adapter = adapter
     }
