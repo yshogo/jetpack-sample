@@ -9,7 +9,7 @@
             type="com.example.yamadashougo.schejule_app.ui.schedule.ScheduleViewModel"/>
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <FrameLayout
         android:id="@+id/schedule"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,16 +18,16 @@
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/schedule_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 app:items="@{viewModel.items}"
                 />
 
         </android.support.v4.widget.SwipeRefreshLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </FrameLayout>
 </layout>
