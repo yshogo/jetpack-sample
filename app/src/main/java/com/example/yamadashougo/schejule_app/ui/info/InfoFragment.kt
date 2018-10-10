@@ -27,7 +27,7 @@ class InfoFragment : Fragment(), MainNavigationFragment {
             viewModel = this@InfoFragment.viewModel
         }
 
-        return inflater.inflate(R.layout.info_fragment, container, false)
+        return mInfoViewBinding.root
     }
 
     override fun onResume() {

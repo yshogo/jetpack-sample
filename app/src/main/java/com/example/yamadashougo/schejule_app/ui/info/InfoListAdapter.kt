@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.yamadashougo.schejule_app.R
-import com.example.yamadashougo.schejule_app.databinding.InfoFragmentBinding
 import com.example.yamadashougo.schejule_app.databinding.InfoItemBinding
 
 class InfoListAdapter(val context: Context, var list: List<Info>, val fragment: InfoFragment): RecyclerView.Adapter<InfoListAdapter.ViewHolder>(){
