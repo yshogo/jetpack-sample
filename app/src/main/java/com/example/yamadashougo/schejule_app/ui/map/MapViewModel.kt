@@ -7,7 +7,5 @@ class MapViewModel : ViewModel() {
 
     var items: ObservableArrayList<Map> = ObservableArrayList()
 
-    fun start() {
-        // TODO ここでAPIを叩く
-    }
+    val mapList = MapRepository().getMapList()
 }
