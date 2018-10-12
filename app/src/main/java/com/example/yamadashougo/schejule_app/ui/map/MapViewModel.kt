@@ -4,5 +4,5 @@ import android.arch.lifecycle.ViewModel
 
 class MapViewModel : ViewModel() {
 
-    val mapList = MapRepository().getMapList()
+    val items = MapRepository().getMapList()
 }

@@ -1,6 +1,5 @@
 package com.example.yamadashougo.schejule_app.ui.map
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -32,11 +31,7 @@ class MapFragment : Fragment(), MainNavigationFragment {
     override fun onResume() {
         super.onResume()
 
-        viewModel.mapList.observe(this, Observer<List<Map>> {
-            if (it == null) return@Observer
-            items = it
-            setList()
-        })
+        setList()
     }
 
     private fun setList() {

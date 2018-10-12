@@ -26,4 +26,9 @@ class MapListAdapter(val context: Context, var list: List<Map>, val fragment: Ma
     inner class ViewHolder(view: MapItemBinding) : RecyclerView.ViewHolder(view.root) {
         var mItem: MapItemBinding = view
     }
+
+    fun update(items: List<Map>) {
+        list = items
+        notifyDataSetChanged()
+    }
 }
