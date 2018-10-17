@@ -5,4 +5,5 @@ class Map {
     var time: Int = 0
     var tag: String = ""
     var hour: String = ""
+    var isDone: Boolean = true
 }
