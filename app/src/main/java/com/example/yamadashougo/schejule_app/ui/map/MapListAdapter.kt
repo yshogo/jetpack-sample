@@ -1,5 +1,6 @@
 package com.example.yamadashougo.schejule_app.ui.map
 
+import android.arch.lifecycle.LifecycleOwner
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
@@ -8,7 +9,10 @@ import android.view.ViewGroup
 import com.example.yamadashougo.schejule_app.R
 import com.example.yamadashougo.schejule_app.databinding.MapItemBinding
 
-class MapListAdapter(val context: Context, var list: List<Map>, val fragment: MapFragment) : RecyclerView.Adapter<MapListAdapter.ViewHolder>(){
+class MapListAdapter(val context: Context,
+                     var list: List<Map>,
+                     val lifeCycleOner: LifecycleOwner,
+                     val itemClickListener: MapItemClickListener) : RecyclerView.Adapter<MapListAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val itemBinding = DataBindingUtil.inflate<MapItemBinding>(LayoutInflater.from(p0.context), R.layout.map_item, p0, false)
@@ -25,6 +29,10 @@ class MapListAdapter(val context: Context, var list: List<Map>, val fragment: Ma
 
     inner class ViewHolder(view: MapItemBinding) : RecyclerView.ViewHolder(view.root) {
         var mItem: MapItemBinding = view
+        init {
+            mItem.setLifecycleOwner(lifeCycleOner)
+            mItem.eventListener = itemClickListener
+        }
     }
 
     fun update(items: List<Map>) {

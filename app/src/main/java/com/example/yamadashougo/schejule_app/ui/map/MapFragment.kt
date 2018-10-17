@@ -36,7 +36,7 @@ class MapFragment : Fragment(), MainNavigationFragment {
     }
 
     private fun setList() {
-        val adapter = MapListAdapter(requireContext(), items, this)
+        val adapter = MapListAdapter(requireContext(), items, this, viewModel)
         mMapFragmentBinding.mapList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
