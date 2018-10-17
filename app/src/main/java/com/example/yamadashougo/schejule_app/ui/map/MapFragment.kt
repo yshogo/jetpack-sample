@@ -3,6 +3,7 @@ package com.example.yamadashougo.schejule_app.ui.map
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -36,7 +37,10 @@ class MapFragment : Fragment(), MainNavigationFragment {
 
     private fun setList() {
         val adapter = MapListAdapter(requireContext(), items, this)
-        mMapFragmentBinding.mapList.layoutManager = LinearLayoutManager(requireContext())
-        mMapFragmentBinding.mapList.adapter = adapter
+        mMapFragmentBinding.mapList.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+            this.adapter = adapter
+        }
     }
 }
