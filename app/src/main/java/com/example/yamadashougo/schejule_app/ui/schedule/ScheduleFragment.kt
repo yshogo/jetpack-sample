@@ -3,6 +3,7 @@ package com.example.yamadashougo.schejule_app.ui.schedule
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -41,7 +42,10 @@ class ScheduleFragment : Fragment(), MainNavigationFragment {
 
     private fun setList() {
         val adapter = ScheduleListAdapter(requireContext(), items, this)
-        mScheduleBinding.scheduleList.layoutManager = LinearLayoutManager(context)
-        mScheduleBinding.scheduleList.adapter = adapter
+        mScheduleBinding.scheduleList.apply {
+            addItemDecoration(DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
+            layoutManager = LinearLayoutManager(context)
+            this.adapter = adapter
+        }
     }
 }
