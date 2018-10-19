@@ -11,13 +11,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.yamadashougo.schejule_app.databinding.MapFragmentBinding
 import com.example.yamadashougo.schejule_app.ui.main.MainNavigationFragment
-import javax.security.auth.callback.Callback
+import com.example.yamadashougo.schejule_app.ui.map.detail.DaggerMapComponent
+import com.example.yamadashougo.schejule_app.ui.map.detail.MapDetail
+import javax.inject.Inject
 
 class MapFragment : Fragment(), MainNavigationFragment {
 
     private lateinit var viewModel: MapViewModel
     private lateinit var mMapFragmentBinding: MapFragmentBinding
     var items: List<Map> = ArrayList()
+
+    @Inject lateinit var mapDetail: MapDetail
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        DaggerMapComponent.builder().build().inject(this)
+        val hello = mapDetail.sayHelloDaggarProvide()
+        print(hello)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
